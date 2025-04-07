@@ -1,0 +1,15 @@
+name: Vérification HTML automatique
+
+on:
+  push:
+    branches: [ main, html-interface ]
+
+jobs:
+  html-check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Récupérer le code
+      uses: actions/checkout@v2
+
+    - name: Vérifier le HTML
+      uses: Cyb3r-Jak3/html5validator-action@v1
