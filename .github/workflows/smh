@@ -1,0 +1,23 @@
+name: Vérification HTML
+
+on:
+  push:
+    branches: [ main, projet-git ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  html-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cloner le projet
+        uses: actions/checkout@v3
+
+      - name: Installer tidy (outil de validation HTML)
+        run: sudo apt-get install tidy
+
+      - name: Valider le HTML
+        run: tidy -qe projet-git || true
+
+
